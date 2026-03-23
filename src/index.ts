@@ -18,7 +18,7 @@ app.post('/upload', async (c) => {
   try {
     // リクエストボディからバイナリデータを直接取得
     const arrayBuffer = await c.req.arrayBuffer();
-    
+
     // バリデーション
     if (!arrayBuffer || arrayBuffer.byteLength === 0) {
       return c.json(
@@ -32,10 +32,10 @@ app.post('/upload', async (c) => {
 
     // Content-Typeの取得（リクエストヘッダーから）
     const contentType = c.req.header('Content-Type') || 'application/octet-stream';
-    
+
     // ファイル名を生成（文字列型に変換）
     const r2Key = Date.now().toString();
-    
+
     // R2にファイルをアップロード
     const r2 = c.env.test_bucket_20251115;
 
